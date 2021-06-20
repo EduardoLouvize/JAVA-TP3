@@ -43,6 +43,7 @@ public abstract class Pessoa {
 		
 		StringBuilder nomeFormatado = new StringBuilder();
 		
+		nomeFormatado.append("[" + id + "] ");
 		nomeFormatado.append(ultimoNome.toUpperCase());
 		nomeFormatado.append(", ");
 		nomeFormatado.append(nome);
@@ -54,9 +55,15 @@ public abstract class Pessoa {
 		return nomeFormatado;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(String nome) throws NomeIncompletoException{
+		
+		if (!nome.contains(" ")) {
+			throw new NomeIncompletoException("Preenchimento inválido! O nome está incompleto!");
+		}
+		
 		int primeiroEspaco = nome.indexOf(" ");
-		int ultimoEspaco = nome.lastIndexOf(" ");		
+		int ultimoEspaco = nome.lastIndexOf(" ");
+		
 		
 		
 		this.nome = nome.substring(0, primeiroEspaco);

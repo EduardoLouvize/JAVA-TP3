@@ -61,16 +61,17 @@ public class Aluno extends Pessoa {
 		this.notaAvaliacao1 = notaAvaliacao1;
 	}
 
-	public float getNotaAvaliacao2() throws NotaInvalidaException {
-
-		if (this.notaAvaliacao2 < 0 || this.notaAvaliacao2 > 10) {
-			throw new NotaInvalidaException("Nota inválida");
-		}
+	public float getNotaAvaliacao2(){
 
 		return notaAvaliacao2;
 	}
 
-	public void setNotaAvaliacao2(float notaAvaliacao2) {
+	public void setNotaAvaliacao2(float notaAvaliacao2) throws NotaInvalidaException{
+		
+		if (this.notaAvaliacao2 < 0 || this.notaAvaliacao2 > 10) {
+			throw new NotaInvalidaException("Nota inválida");
+		}
+		
 		this.notaAvaliacao2 = notaAvaliacao2;
 	}
 
